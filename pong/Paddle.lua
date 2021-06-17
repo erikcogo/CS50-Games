@@ -50,6 +50,16 @@ function Paddle:update(dt)
     end
 end
 
+function Paddle:update_IA(by, bdy, dt)
+    -- update for the IA paddle
+    if self.dy < 0 then
+        self.y = math.max(0, by + bdy * dt)
+    else
+        self.y = math.min(VIRTUAL_HEIGHT - self.height, by + bdy *dt)
+
+    end
+end
+
 --[[
     To be called by our main function in `love.draw`, ideally. Uses
     LÖVE2D's `rectangle` function, which takes in a draw mode as the first
